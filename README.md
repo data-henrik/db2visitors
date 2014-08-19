@@ -5,7 +5,7 @@ Simple DB2 / node.js demonstration for [IBM Bluemix](http://bluemix.net), track 
 
 Most of the code is explained in the following blog articles:
 * [Accessing DB2 from node.js on IBM Bluemix and locally](http://blog.4loeser.net/2014/08/accessing-db2-from-nodejs-on-ibm.html)
-* [to be written right now](http://blog.4loeser.net)
+* [Sample IBM Bluemix Application: Extended IP logging with node.js and DB2](http://blog.4loeser.net/2014/08/sample-ibm-bluemix-application-extended.html)
 
 # Find more information
 Visit [Henrik''s blog](http://blog.4loeser.net) and follow him on Twitte: [@data_henrik](http://twitter.com/data_henrik)
