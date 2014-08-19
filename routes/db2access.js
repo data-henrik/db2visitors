@@ -1,6 +1,11 @@
+// Written by Henrik Loeser
+// Some functions to retrieve extended information for a IP address,
+// to insert that extended IP record into a DB2 table, and to
+// report some basic statistics as part of a second HTML page.
 
 
 
+// Insert the JSON record with the IP information as SQL record into DB2.
 exports.insertIP = function(ibmdb,connString,ipinfo) {
                    console.log("insertIP called",ipinfo);        
                    ibmdb.open(connString, function(err, conn) {
@@ -28,6 +33,9 @@ exports.insertIP = function(ibmdb,connString,ipinfo) {
                         }
                 })};
 
+
+// Get the caller's IP address from runtime environment and call
+// geo location service to obtain extended data
 exports.getIP=function(request,ibmdb,connString) {
   return function(req, res) {
   var ip = req.headers['x-client-ip'] || req.connection.remoteAddress;
@@ -52,7 +60,7 @@ exports.getIP=function(request,ibmdb,connString) {
 
 
 
-
+// Very simple country/region-based reporting done using GROUP BY.
 exports.listCountries = function(ibmdb,connString) {
                 return function(req, res) {
                            
