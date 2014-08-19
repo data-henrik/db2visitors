@@ -1,0 +1,21 @@
+//- body.jade
+//- This file provides the HTML body part.
+
+
+body
+  table
+    tr
+      td(style= "width:30%;" )
+        img(src="/images/db2gotyou.png")
+      td
+        h1 Look, who came over
+        p Here are some statistics about the visitors to this DB2 demo application.
+        p The table shows visitors by country and region:
+        table
+          - for (var x=0;x < tablelist.length; x++) {
+          tr
+            td= tablelist[x].COUNTRY
+            td= tablelist[x].REGION
+            td= tablelist[x].RCOUNT
+          - }
+

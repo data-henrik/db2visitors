@@ -1,0 +1,22 @@
+//- body.jade
+//- This file provides the HTML body part.
+
+
+body
+  table
+    tr
+      td(style= "width:30%;" )
+        img(src="/images/db2gotyou.png")
+      td
+        h1 Hi there!
+        p Thanks for visiting my <span class = "blue">DB2 visits IBM Bluemix</span> application. 
+        p This is what I know about you and got stored in DB2:
+        p Your IP address: 
+          =ipinfo["ip"]
+        p Your city: 
+          =ipinfo["city"]
+        p Your country (maybe...): 
+          =ipinfo["country_name"]+'/'+ipinfo["country_code"]
+        p And all what is reported: 
+         =JSON.stringify(ipinfo)
+
