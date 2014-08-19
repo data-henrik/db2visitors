@@ -1,0 +1,11 @@
+applications:
+- services:
+  - db2visitors
+  disk_quota: 1024M
+  host: db2visitors
+  name: db2visitors
+  command: node app.js
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 128M
