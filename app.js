@@ -5,6 +5,9 @@
 // This sample application uses express as web application framework (http://expressjs.com/),
 // and jade as template engine (http://jade-lang.com/).
 
+// Written by Henrik Loeser
+// Based on the node.js starter application as available on IBM Bluemix (http://bluemix.net)
+
 var express = require('express');
 var request = require('request');
 var fs = require('fs');
@@ -28,14 +31,7 @@ app.use(express.static(__dirname + '/public')); //setup static public directory
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views'); //optional since express defaults to CWD/views
 
-
-
-app.get('/henrik', function(req, res){
-	console.log("Henrik");
-	res.render('index',{ variable: { ipinfo : ipjson}});
-});
-
-// get DB2 SQLDB service information
+// get DB2 SQLDB service information from Bluemix environment
 function findKey(obj,lookup) {
    for (var i in obj) {
       if (typeof(obj[i])==="object") {
@@ -52,10 +48,12 @@ var env = null;
 var key = -1;
 var db2creds=null;
 
+// find SQLDB service
 if (process.env.VCAP_SERVICES) {
       env = JSON.parse(process.env.VCAP_SERVICES);
       key = findKey(env,'SQLDB');
 }
+// if not found we are local and load DB2 access information from file
 if (!env) {
    console.log("We are local");
    var file = __dirname + '/db2cred.json';
@@ -68,6 +66,9 @@ if (!env) {
 var db2creds = env[key][0].credentials;
 
 }
+
+// At this point we should have the credentials to access DB2
+// Construct the connection string
 var connString = "DRIVER={DB2};DATABASE=" + db2creds.db + ";UID=" + db2creds.username + ";PWD=" + db2creds.password + ";HOSTNAME=" + db2creds.hostname + ";port=" + db2creds.port;
 
 // render index page by calling getIP
