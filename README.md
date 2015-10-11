@@ -28,7 +28,7 @@ None
 
 # License
 
-See [LICENSE](LICENSE) file.
+See [LICENSE](LICENSE.md) file.
 
 # Find more information
 Visit [Henrik''s blog](http://blog.4loeser.net) and follow him on Twitter: [@data_henrik](http://twitter.com/data_henrik)
